@@ -189,6 +189,26 @@ public class Start {
         System.out.println();
 
         System.out.println("================================");
+        System.out.println("     DECALAGE DU VOL");
+        System.out.println("================================");
+
+        // Décalage du vol de 2 heures
+        volAvecEscale.decaler(Duration.ofHours(2));
+
+        System.out.println("Nouvelle date de départ : "
+                + volAvecEscale.getDepart().getDate());
+
+        System.out.println("Nouvelle date d'arrivée : "
+                + volAvecEscale.getArrivee().getDate());
+
+        System.out.println("Nouvelle date de l'escale : "
+                + volAvecEscale.getEscales()
+                        .get(0)
+                        .getDate());
+
+        System.out.println();
+
+        System.out.println("================================");
         System.out.println("        RESERVATION");
         System.out.println("================================");
 

@@ -34,11 +34,8 @@ public class Vol {
     // Etat du vol : ouvert ou fermé aux réservations
     private boolean ouvert = false;
 
-    public Vol(
-            String numero,
-            Etape depart,
-            Etape arrivee
-    ) {
+    public Vol(String numero, Etape depart, Etape arrivee) 
+    {
 
         // Vérifie le numéro
         if (numero == null || numero.isBlank()) {
@@ -125,6 +122,28 @@ public class Vol {
         }
 
         escales.add(escale);
+    }
+
+    // Décale toutes les étapes du vol
+    public void decaler(Duration duree) {
+
+        // Vérifie que la durée existe
+        if (duree == null) {
+            throw new IllegalArgumentException(
+                    "La durée ne peut pas être null"
+            );
+        }
+
+        // Décale le départ
+        depart.decaler(duree);
+
+        // Décale l'arrivée
+        arrivee.decaler(duree);
+
+        // Décale toutes les escales
+        for (Escale escale : escales) {
+            escale.decaler(duree);
+        }
     }
 
     // Calcule la durée totale entre départ et arrivée

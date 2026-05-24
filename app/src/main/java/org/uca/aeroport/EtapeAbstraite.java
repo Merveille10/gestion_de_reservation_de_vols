@@ -1,5 +1,6 @@
 package org.uca.aeroport;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -37,6 +38,18 @@ public abstract class EtapeAbstraite {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    // Décale la date de l'étape
+    public void decaler(Duration duree) {
+
+        if (duree == null) {
+            throw new IllegalArgumentException(
+                    "La durée ne peut pas être null"
+            );
+        }
+
+        date = date.plus(duree);
     }
 
     @Override

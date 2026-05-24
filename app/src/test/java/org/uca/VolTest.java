@@ -5,6 +5,7 @@ import org.uca.aeroport.*;
 import org.uca.reservation.Client;
 import org.uca.reservation.Passager;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -171,4 +172,87 @@ public class VolTest {
                 )
         );
     }
+
+    // Vérifie le décalage d'un vol
+    @Test
+    public void testDecalageVol() 
+    {
+        Aeroport paris =
+                new Aeroport(
+                        "Charles de Gaulle",
+                        "Paris"
+                );
+
+        Aeroport dubai =
+                new Aeroport(
+                        "Dubai International",
+                        "Dubai"
+                );
+
+        Aeroport tokyo =
+                new Aeroport(
+                        "Haneda",
+                        "Tokyo"
+                );
+
+        LocalDateTime dateDepart =
+                LocalDateTime.of(
+                        2026,
+                        6,
+                        10,
+                        14,
+                        0
+                );
+
+        LocalDateTime dateEscale =
+                dateDepart.plusHours(6);
+
+        LocalDateTime dateArrivee =
+                dateDepart.plusHours(12);
+
+        Etape depart =
+                new Etape(
+                        paris,
+                        dateDepart
+                );
+
+        Etape arrivee =
+                new Etape(
+                        tokyo,
+                        dateArrivee
+                );
+
+        Escale escale =
+                new Escale(
+                        dubai,
+                        dateEscale,
+                        Duration.ofHours(2)
+                );
+
+        Vol vol =
+                new Vol(
+                        "VOL-DECALAGE",
+                        depart,
+                        arrivee
+                );
+
+        vol.ajouterEscale(escale);
+
+        vol.decaler(Duration.ofHours(2));
+
+        assertEquals(
+                dateDepart.plusHours(2),
+                vol.getDepart().getDate()
+        );
+
+        assertEquals(
+                dateArrivee.plusHours(2),
+                vol.getArrivee().getDate()
+        );
+
+        assertEquals(
+                dateEscale.plusHours(2),
+                vol.getEscales().get(0).getDate()
+        );
+        }
 }

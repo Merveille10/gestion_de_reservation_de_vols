@@ -165,10 +165,37 @@ creerReservation(...)
 prix()
 obtenirDuree()
 ajouterEscale(...)
+decaler(Duration duree)
 ```
 
 Un vol doit être ouvert pour qu'une réservation puisse être créée.
 Si le vol est fermé, une exception est levée.
+
+---
+
+### Décalage d'un vol
+
+La méthode :
+
+```java
+decaler(Duration duree)
+```
+
+permet de décaler toutes les dates associées à un vol :
+
+- la date de départ ;
+- la date d'arrivée ;
+- les dates des escales.
+
+Exemple :
+
+```java
+vol.decaler(Duration.ofHours(2));
+```
+
+Cette méthode repose sur le polymorphisme de `EtapeAbstraite`.
+
+Chaque étape du vol possède sa propre date et peut être décalée indépendamment.
 
 ---
 
@@ -184,6 +211,10 @@ EtapeAbstraite
  ┌────┴────┐
 Etape    Escale
 ```
+
+## Diagramme UML des vols
+
+<img src="images/strategie.png" alt="Modélisation des vols vue en TD" width="800">
 
 
 ### EtapeAbstraite
@@ -312,6 +343,11 @@ EtatPayee
 EtatConfirmee
 EtatAnnulee
 ```
+
+## Diagramme des états de réservation
+
+<img src="images/pattern-state.png" alt="Pattern State Reservation" width="700">
+
 
 Ces classes héritent toutes de la classe abstraite :
 
