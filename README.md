@@ -176,6 +176,14 @@ Si le vol est fermé, une exception est levée.
 
 La correction du TD proposait une modélisation avec une classe abstraite pour factoriser les éléments communs entre les étapes simples et les escales.
 C'était la deuxième stratégie proposée en TD et c'est cette solution que j'ai choisie pour réaliser l'implémentation.
+La structure est la suivante :
+
+```text
+EtapeAbstraite
+      ↑
+ ┌────┴────┐
+Etape    Escale
+```
 
 
 ### EtapeAbstraite
