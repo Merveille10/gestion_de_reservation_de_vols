@@ -347,7 +347,7 @@ EtatAnnulee
 ## Diagramme des états de réservation
 
 <img src="images/pattern-state.png" alt="Pattern State Reservation" width="700">
-
+<img src="images/etat.png" alt="Pattern State Reservation" width="700">
 
 Ces classes héritent toutes de la classe abstraite :
 
@@ -356,7 +356,7 @@ EtatReservation
 ```
 
 La classe `Reservation` possède un attribut :
-
+     
 ```java
 private EtatReservation etat;
 ```
